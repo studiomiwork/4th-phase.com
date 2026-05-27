@@ -1,4 +1,5 @@
 const year = document.querySelector("#year");
+const foundingYear = 2025;
 const languageSelect = document.querySelector(".language-switcher select");
 const navShell = document.querySelector(".nav-shell");
 const menuToggle = document.querySelector(".menu-toggle");
@@ -22,10 +23,6 @@ const translations = {
     navCompany: "会社情報",
     navContact: "お問い合わせ",
     languageLabel: "言語",
-    heroEyebrow: "写真・映像制作・アウトドア関連事業・保管管理",
-    heroTitle: "写真・映像制作とアウトドア関連事業",
-    heroSubtitle: "写真・映像制作とアウトドア関連事業会社",
-    heroNote: "日本を拠点とする合同会社",
     heroButton: "会社概要を見る",
     aboutEyebrow: "会社概要",
     aboutTitle: "写真・映像、自然、季節に関わる事業を運営しています",
@@ -123,10 +120,6 @@ const translations = {
     navCompany: "Company",
     navContact: "Contact",
     languageLabel: "Language",
-    heroEyebrow: "Photography and video production / Outdoor operations / Storage management",
-    heroTitle: "Photography, video and outdoor operations",
-    heroSubtitle: "Visual and outdoor operations company",
-    heroNote: "A Japan-based limited liability company",
     heroButton: "View company profile",
     aboutEyebrow: "About",
     aboutTitle: "We operate businesses connected to visuals, nature and seasonal activities.",
@@ -224,10 +217,6 @@ const translations = {
     navCompany: "公司資訊",
     navContact: "聯絡我們",
     languageLabel: "語言",
-    heroEyebrow: "攝影影像製作・戶外相關事業・保管管理",
-    heroTitle: "攝影影像製作與戶外相關事業",
-    heroSubtitle: "攝影影像製作與戶外相關事業公司",
-    heroNote: "以日本為據點的合同公司",
     heroButton: "查看公司概要",
     aboutEyebrow: "公司概要",
     aboutTitle: "我們經營與攝影影像、自然及季節活動相關的事業。",
@@ -325,10 +314,6 @@ const translations = {
     navCompany: "회사 정보",
     navContact: "문의",
     languageLabel: "언어",
-    heroEyebrow: "사진·영상 제작・아웃도어 관련 사업・보관 관리",
-    heroTitle: "사진·영상 제작과 아웃도어 관련 사업",
-    heroSubtitle: "사진·영상 제작 및 아웃도어 관련 사업 회사",
-    heroNote: "일본을 거점으로 하는 합동회사",
     heroButton: "회사 개요 보기",
     aboutEyebrow: "회사 개요",
     aboutTitle: "사진·영상, 자연, 계절 활동과 관련된 사업을 운영합니다.",
@@ -440,7 +425,9 @@ if (!translations[activeLanguage]) {
 }
 
 if (year) {
-  year.textContent = new Date().getFullYear();
+  const currentYear = new Date().getFullYear();
+  year.textContent =
+    currentYear > foundingYear ? `${foundingYear}–${currentYear}` : String(foundingYear);
 }
 
 const getCurrentCopy = () => translations[activeLanguage] || translations.ja;

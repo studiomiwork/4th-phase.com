@@ -7,7 +7,7 @@
   --panel: rgba(255, 255, 255, 0.045);
   --ice: #b8d8e0;
   --silver: #d7d9d8;
-  --logo-gray: #8d8d8a;
+  --logo-gray: #ececea;
 }
 
 * {
@@ -73,15 +73,17 @@ img {
 }
 
 .nav-brand {
-  display: grid;
-  gap: 2px;
-  min-width: 122px;
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 22px;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  line-height: 0.95;
-  text-transform: none;
+  flex: 0 0 auto;
+  line-height: 0;
+}
+
+.nav-brand img {
+  display: block;
+  width: auto;
+  height: 44px;
+  max-width: min(260px, 52vw);
+  object-fit: contain;
+  filter: brightness(2.15) contrast(1.06);
 }
 
 .logo-lockup {
@@ -357,7 +359,7 @@ textarea:focus-visible {
 .hero-company-name {
   width: min(760px, 90vw);
   gap: 0;
-  margin-bottom: 42px;
+  margin-bottom: 0;
   color: white;
   font-weight: 500;
   letter-spacing: -0.055em;
@@ -370,7 +372,11 @@ textarea:focus-visible {
 }
 
 .hero-company-name span + span {
-  margin-top: 4px;
+  margin-top: 8px;
+  font-size: clamp(28px, 4.2vw, 48px);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.82);
 }
 
 .eyebrow {
@@ -390,34 +396,12 @@ textarea:focus-visible {
   content: " )";
 }
 
-.hero h1,
 .section h2 {
   margin: 0;
   color: white;
   font-weight: 500;
   letter-spacing: -0.06em;
   text-wrap: balance;
-}
-
-.hero h1 {
-  margin-top: 26px;
-  font-size: clamp(48px, 8vw, 112px);
-  line-height: 0.96;
-}
-
-.hero-subtitle {
-  margin: 28px 0 0;
-  color: rgba(255, 255, 255, 0.78);
-  font-size: clamp(18px, 2.5vw, 28px);
-  letter-spacing: 0.08em;
-}
-
-.hero-note {
-  margin: 18px 0 0;
-  color: rgba(255, 255, 255, 0.45);
-  font-size: 12px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
 }
 
 .button {
@@ -721,6 +705,18 @@ textarea:focus-visible {
   opacity: 0.9;
 }
 
+.brand-card--zero-below .brand-logo {
+  width: min(220px, 62%);
+  margin-top: 22px;
+}
+
+.brand-card--zero-below h3 {
+  margin-top: 12px;
+  font-size: clamp(24px, 3.2vw, 34px);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
 .brand-card p:not(.eyebrow) {
   max-width: 520px;
   margin: 28px 0 0;
@@ -939,9 +935,12 @@ button:hover {
   }
 
   .nav-brand {
-    min-width: auto;
     margin-right: auto;
-    font-size: clamp(22px, 6vw, 30px);
+  }
+
+  .nav-brand img {
+    height: 36px;
+    max-width: min(210px, 54vw);
   }
 
   .nav-actions {
