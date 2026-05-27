@@ -7,6 +7,18 @@
       name="description"
       content="Fourth Phase 合同会社は、写真・映像制作、アウトドア関連事業、保管・物流管理を行う日本の合同会社です。"
     />
+    <meta name="theme-color" content="#050505" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://4th-phase.com/" />
+    <meta property="og:title" content="Fourth Phase 合同会社 | 写真・映像制作・アウトドア関連事業" />
+    <meta
+      property="og:description"
+      content="Fourth Phase 合同会社は、写真・映像制作、アウトドア関連事業、保管・物流管理を行う日本の合同会社です。"
+    />
+    <meta property="og:image" content="https://4th-phase.com/assets/kyoto-hero-cover.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://4th-phase.com/" />
+    <link rel="icon" href="assets/fourth-phase-logo-transparent.png" type="image/png" />
     <title>Fourth Phase 合同会社 | 写真・映像制作・アウトドア関連事業</title>
     <link rel="preconnect" href="https://images.unsplash.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,11 +28,25 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="preload" href="assets/fourth-phase-logo-transparent.png" as="image" fetchpriority="high" />
+    <link rel="preload" href="assets/kyoto-hero-cover.png" as="image" fetchpriority="high" />
   </head>
   <body>
+    <a class="skip-link" href="#about" data-i18n="skipLink">メインコンテンツへ</a>
+    <div id="site-intro" class="site-intro" role="presentation" aria-hidden="true">
+      <img
+        class="site-intro__logo"
+        src="assets/fourth-phase-logo-transparent.png"
+        alt=""
+        width="640"
+        height="180"
+        decoding="async"
+      />
+    </div>
+
     <header class="site-header">
       <nav class="nav-shell" aria-label="メインナビゲーション" data-i18n-aria-label="navAria">
-        <a class="brand-mark nav-brand" href="#home" aria-label="Fourth Phase home">
+        <a class="brand-mark nav-brand" href="#home" aria-label="Fourth Phase home" data-i18n-aria-label="homeAria">
           <img src="assets/fourth-phase-logo-transparent.png" alt="Fourth Phase" width="220" height="62" />
         </a>
         <div class="nav-links" id="nav-menu">
@@ -41,7 +67,14 @@
               <option value="ko">한국어</option>
             </select>
           </label>
-          <button class="menu-toggle" type="button" aria-label="メニュー" aria-expanded="false" aria-controls="nav-menu">
+          <button
+            class="menu-toggle"
+            type="button"
+            aria-label="メニューを開く"
+            data-i18n-aria-label="menuAria"
+            aria-expanded="false"
+            aria-controls="nav-menu"
+          >
             <span></span>
             <span></span>
             <span></span>
@@ -52,44 +85,59 @@
 
     <main id="home">
       <section class="hero">
-        <div class="hero-grid" aria-hidden="true">
-          <div
-            class="hero-image"
-            style="background-image: url('https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?auto=format&fit=crop&w=1600&q=85')"
-          ></div>
-          <div
-            class="hero-image"
-            style="background-image: url('https://images.unsplash.com/photo-1518087524514-6e70a4b44183?auto=format&fit=crop&w=1600&q=85')"
-          ></div>
-          <div
-            class="hero-image"
-            style="background-image: url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1600&q=85')"
-          ></div>
-        </div>
+        <div
+          class="hero-media"
+          aria-hidden="true"
+          style="background-image: url('assets/kyoto-hero-cover.png')"
+        ></div>
         <div class="hero-overlay"></div>
+        <div class="hero-axes" aria-hidden="true">
+          <span class="hero-axes__y"></span>
+          <span class="hero-axes__x"></span>
+          <span class="hero-axes__tip hero-axes__tip--y"></span>
+          <span class="hero-axes__tip hero-axes__tip--x"></span>
+          <span class="hero-axes__origin"></span>
+          <span class="hero-axes__label hero-axes__label--x">x</span>
+          <span class="hero-axes__label hero-axes__label--y">y</span>
+        </div>
         <div class="hero-content">
-          <div class="hero-logo hero-company-name" aria-label="Fourth Phase 合同会社">
-            <span>Fourth Phase</span>
-            <span>合同会社</span>
+          <div class="hero-brand">
+            <img
+              class="hero-brand__logo"
+              src="assets/fourth-phase-logo-transparent.png"
+              alt="Fourth Phase 合同会社"
+              width="1024"
+              height="291"
+              decoding="async"
+            />
           </div>
-          <a class="button ghost" href="#about" data-i18n="heroButton">会社概要を見る</a>
+          <a class="button ghost hero-cta" href="#about" data-i18n="heroButton">会社概要を見る</a>
         </div>
       </section>
+
+      <div class="hero-spacer" aria-hidden="true"></div>
 
       <section class="section split reveal" id="about">
         <p class="eyebrow" data-i18n="aboutEyebrow">会社概要</p>
         <div>
-          <h2 data-i18n="aboutTitle">写真・映像、自然、季節に関わる事業を運営しています</h2>
-          <p class="lead" data-i18n="aboutLead">Fourth Phase 合同会社は、日本を拠点に、写真・映像制作、アウトドア関連事業、機材・用品の保管管理を行う法人です。</p>
-          <p class="body-copy" data-i18n="aboutBody">日本国内における撮影制作、アウトドア活動、保管・物流管理を中心に、継続的な事業運営を行っています。</p>
+          <h2 class="display-title" data-i18n="aboutTitle">
+            <span class="display-title__line">自然と季節</span>
+            <span class="display-title__line">関わる事業</span>
+          </h2>
+          <p class="lead" data-i18n="aboutLead">日本を拠点に、写真・映像・アウトドア・保管管理を行う合同会社です。</p>
+          <p class="body-copy" data-i18n="aboutBody">国内での制作とアウトドア、機材保管を中心に事業を運営しています。</p>
         </div>
       </section>
 
       <section class="section reveal" id="business">
         <div class="section-heading">
           <p class="eyebrow" data-i18n="businessEyebrow">事業内容</p>
-          <h2 data-i18n="businessTitle">写真・映像制作、アウトドア関連事業、保管管理。</h2>
-          <p data-i18n="businessBody">画像制作、アウトドア活動、関連用品の管理を中心に、継続的な事業運営を行っています。</p>
+          <h2 class="display-title" data-i18n="businessTitle">
+            <span class="display-title__line">写真・映像</span>
+            <span class="display-title__line">アウトドア</span>
+            <span class="display-title__line">保管管理</span>
+          </h2>
+          <p class="section-lead" data-i18n="businessBody">制作・活動・保管を軸に、継続的な事業運営を行っています。</p>
         </div>
         <div class="business-grid">
           <a
@@ -147,8 +195,10 @@
       <section class="section reveal" id="works">
         <div class="section-heading left">
           <p class="eyebrow" data-i18n="worksEyebrow">実績</p>
-          <h2 data-i18n="worksTitle">制作・活動記録。</h2>
-          <p data-i18n="worksBody">ウェディング、アウトドア、ブランド撮影、山岳ドキュメンタリー、日本国内での撮影制作を行っています。</p>
+          <h2 class="display-title" data-i18n="worksTitle">
+            <span class="display-title__line">制作記録</span>
+          </h2>
+          <p class="section-lead" data-i18n="worksBody">ウェディング、アウトドア、ブランド、山岳記録など国内制作を手がけています。</p>
         </div>
         <div class="works-masonry">
           <article class="work-card tall">
@@ -165,13 +215,13 @@
           <article class="work-card">
             <img
               src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=1000&q=85"
-              alt="東京の街並み"
+              alt="京都と東京の街並み"
               data-i18n-alt="workStreetAlt"
               loading="lazy"
               decoding="async"
             />
             <span data-i18n="workStreetLabel">街並み</span>
-            <h3 data-i18n="workStreetTitle">東京スナップ</h3>
+            <h3 data-i18n="workStreetTitle">京都&東京</h3>
           </article>
           <article class="work-card">
             <img
@@ -212,19 +262,24 @@
       <section class="section reveal" id="brands">
         <div class="section-heading">
           <p class="eyebrow" data-i18n="brandsEyebrow">ブランド</p>
-          <h2 data-i18n="brandsTitle">各事業を支えるブランド構成。</h2>
+          <h2 class="display-title" data-i18n="brandsTitle">
+            <span class="display-title__line">事業を支える</span>
+            <span class="display-title__line">ブランド</span>
+          </h2>
         </div>
         <div class="brand-grid">
           <article class="brand-card brand-card--zero-below">
             <p class="eyebrow" data-i18n="zeroEyebrow">スノークラブ</p>
-            <img
-              class="brand-logo"
-              src="assets/zero-below-logo-transparent.png"
-              alt="零度以下スノークラブのロゴ"
-              data-i18n-alt="zeroLogoAlt"
-              loading="lazy"
-              decoding="async"
-            />
+            <div class="brand-logo-slot">
+              <img
+                class="brand-logo"
+                src="assets/zero-below-logo-transparent.png"
+                alt="零度以下スノークラブのロゴ"
+                data-i18n-alt="zeroLogoAlt"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
             <h3>零度以下</h3>
             <p data-i18n="zeroBody">日本でのスノーアクティビティを対象に、レッスン、地域情報、継続的な冬季活動を支援するコミュニティブランドです。</p>
             <div class="tags">
@@ -234,7 +289,7 @@
             </div>
           </article>
           <a
-            class="brand-card"
+            class="brand-card brand-card--mashiro"
             href="https://mashirovisuals.art"
             target="_blank"
             rel="noopener noreferrer"
@@ -242,6 +297,16 @@
             data-i18n-aria-label="mashiroAria"
           >
             <p class="eyebrow" data-i18n="mashiroEyebrow">写真・映像ブランド</p>
+            <div class="brand-logo-slot">
+              <img
+                class="brand-logo"
+                src="assets/mashiro-visuals-logo-transparent.png"
+                alt="Mashiro Visualsのロゴ"
+                data-i18n-alt="mashiroLogoAlt"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
             <h3>Mashiro Visuals</h3>
             <p data-i18n="mashiroBody">日本国内のウェディング、ポートレート、ライフスタイル撮影を中心とする写真・映像制作ブランドです。</p>
             <div class="tags">
@@ -258,7 +323,7 @@
         <div>
           <p class="eyebrow" data-i18n="companyEyebrow">会社情報</p>
           <h2>Fourth Phase 合同会社</h2>
-          <p class="lead" data-i18n="companyLead">自然、移動、写真・映像表現に関わる事業を運営しています。</p>
+          <p class="lead" data-i18n="companyLead">自然・移動・映像表現に関わる事業を運営しています</p>
         </div>
         <div class="facts">
           <div>
@@ -274,11 +339,11 @@
           </div>
           <div>
             <span data-i18n="factAddress">所在地</span>
-            <strong>〒617-0843 京都府長岡京市友岡西山17番地</strong>
+            <strong data-i18n="factAddressValue">〒617-0843 京都府長岡京市友岡西山17番地</strong>
           </div>
           <div>
             <span data-i18n="factRepresentative">代表者</span>
-            <strong>服部 蘭（ハットリ ラン）</strong>
+            <strong data-i18n="factRepresentativeValue">服部 蘭（ハットリ ラン）</strong>
           </div>
         </div>
       </section>
@@ -286,8 +351,11 @@
       <section class="section contact reveal" id="contact">
         <div>
           <p class="eyebrow" data-i18n="contactEyebrow">お問い合わせ</p>
-          <h2 data-i18n="contactTitle">ご用件を明記のうえお問い合わせください。</h2>
-          <p class="body-copy" data-i18n="contactBody">ウェディング、アウトドア、商業撮影、協業に関するご相談を承ります。ご希望内容、時期、場所をご記入ください。</p>
+          <h2 class="display-title" data-i18n="contactTitle">
+            <span class="display-title__line">ご用件を</span>
+            <span class="display-title__line">お知らせください</span>
+          </h2>
+          <p class="body-copy" data-i18n="contactBody">ウェディング・アウトドア・商業撮影・協業のご相談を承ります。</p>
           <a class="direct-mail" href="mailto:info@4th-phase.com">info@4th-phase.com</a>
         </div>
         <form class="inquiry-form">
