@@ -49,27 +49,25 @@ const initSiteIntro = () => {
 
 initSiteIntro();
 
-const heroScrollLockClass = "hero-scroll-locked";
-const rootElement = document.documentElement;
 const heroHomeHashes = new Set(["", "#", "#home"]);
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const isHeroHomeHash = (hash) => heroHomeHashes.has(hash);
 
-const lockHeroScroll = () => {
-  rootElement.classList.add(heroScrollLockClass);
-  if (window.scrollY !== 0) {
-    window.scrollTo(0, 0);
-  }
-};
+const year = document.querySelector("#year");
+const foundingYear = 2025;
+const languageSelect = document.querySelector(".language-switcher select");
+const navShell = document.querySelector(".nav-shell");
+const menuToggle = document.querySelector(".menu-toggle");
+const navMenuLinks = document.querySelectorAll(".nav-links a");
 
-const unlockHeroScroll = () => {
-  rootElement.classList.remove(heroScrollLockClass);
+const closeMobileNav = () => {
+  navShell?.classList.remove("is-open");
+  menuToggle?.setAttribute("aria-expanded", "false");
 };
 
 const scrollToPageTarget = (hash, behavior = "smooth") => {
-
   if (isHeroHomeHash(hash)) {
-    lockHeroScroll();
     window.scrollTo({ top: 0, behavior });
     return;
   }
@@ -79,29 +77,12 @@ const scrollToPageTarget = (hash, behavior = "smooth") => {
     return;
   }
 
-  unlockHeroScroll();
   target.scrollIntoView({ behavior, block: "start" });
 };
 
-const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-const initHeroScrollLock = () => {
+const initAnchorNavigation = () => {
   const initialHash = window.location.hash;
-
-  if (prefersReducedMotion) {
-    unlockHeroScroll();
-    if (!isHeroHomeHash(initialHash)) {
-      window.requestAnimationFrame(() => {
-        scrollToPageTarget(initialHash, "auto");
-      });
-    }
-    return;
-  }
-
-  if (isHeroHomeHash(initialHash)) {
-    lockHeroScroll();
-  } else {
-    unlockHeroScroll();
+  if (initialHash && document.querySelector(initialHash)) {
     window.requestAnimationFrame(() => {
       scrollToPageTarget(initialHash, "auto");
     });
@@ -116,83 +97,17 @@ const initHeroScrollLock = () => {
     anchor.addEventListener("click", (event) => {
       event.preventDefault();
       closeMobileNav();
-      scrollToPageTarget(hash);
+      scrollToPageTarget(hash, prefersReducedMotion ? "auto" : "smooth");
       history.pushState(null, "", hash);
     });
   });
 
   window.addEventListener("popstate", () => {
-    const hash = window.location.hash;
-    if (isHeroHomeHash(hash)) {
-      scrollToPageTarget(hash, "auto");
-      return;
-    }
-
-    unlockHeroScroll();
-    window.requestAnimationFrame(() => {
-      scrollToPageTarget(hash, "auto");
-    });
-  });
-
-  window.addEventListener(
-    "wheel",
-    (event) => {
-      if (rootElement.classList.contains(heroScrollLockClass)) {
-        event.preventDefault();
-      }
-    },
-    { passive: false },
-  );
-
-  window.addEventListener(
-    "touchmove",
-    (event) => {
-      if (rootElement.classList.contains(heroScrollLockClass)) {
-        event.preventDefault();
-      }
-    },
-    { passive: false },
-  );
-
-  window.addEventListener("keydown", (event) => {
-    if (!rootElement.classList.contains(heroScrollLockClass)) {
-      return;
-    }
-
-    const activeTag = document.activeElement?.tagName;
-    if (activeTag === "INPUT" || activeTag === "TEXTAREA" || activeTag === "SELECT") {
-      return;
-    }
-
-    const scrollKeys = new Set([
-      "ArrowDown",
-      "ArrowUp",
-      "PageDown",
-      "PageUp",
-      "Home",
-      "End",
-      " ",
-    ]);
-
-    if (scrollKeys.has(event.key)) {
-      event.preventDefault();
-    }
+    scrollToPageTarget(window.location.hash || "#home", "auto");
   });
 };
 
-const year = document.querySelector("#year");
-const foundingYear = 2025;
-const languageSelect = document.querySelector(".language-switcher select");
-const navShell = document.querySelector(".nav-shell");
-const menuToggle = document.querySelector(".menu-toggle");
-const navMenuLinks = document.querySelectorAll(".nav-links a");
-
-const closeMobileNav = () => {
-  navShell?.classList.remove("is-open");
-  menuToggle?.setAttribute("aria-expanded", "false");
-};
-
-initHeroScrollLock();
+initAnchorNavigation();
 
 const translatedElements = document.querySelectorAll("[data-i18n]");
 const translatedPlaceholders = document.querySelectorAll("[data-i18n-placeholder]");

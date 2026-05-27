@@ -23,13 +23,6 @@ html {
   background: var(--black);
 }
 
-html.hero-scroll-locked,
-html.hero-scroll-locked body {
-  height: 100%;
-  overflow: hidden;
-  overscroll-behavior: none;
-}
-
 body.site-intro-active {
   overflow: hidden;
 }
@@ -194,12 +187,6 @@ body.site-intro-animated.site-intro-done .hero-cta {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-
-  html.hero-scroll-locked,
-  html.hero-scroll-locked body {
-    height: auto;
-    overflow: auto;
   }
 
   .site-intro {
@@ -501,14 +488,12 @@ textarea:focus-visible {
 }
 
 .hero {
-  position: fixed;
-  inset: 0;
+  position: relative;
   z-index: 0;
   isolation: isolate;
   display: grid;
-  height: 100vh;
-  height: 100svh;
-  max-height: 100svh;
+  min-height: 100vh;
+  min-height: 100svh;
   place-items: center;
   overflow: hidden;
   padding: 0;
@@ -532,20 +517,14 @@ textarea:focus-visible {
   );
 }
 
-.hero-spacer {
-  display: block;
-  height: 100vh;
-  height: 100svh;
-  pointer-events: none;
-}
-
 main {
   position: relative;
   z-index: 1;
+  background-color: var(--black);
 }
 
 main > .section {
-  background-color: #050505;
+  background-color: var(--black);
 }
 
 .hero-axes {
